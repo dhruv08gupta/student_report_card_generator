@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Report Card Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">STUDENT ACADEMIC PORTAL</p>
+      <h1>Report Card Generator</h1>
+      <p class="subtitle">Enter marks, calculate results and create a printable report card.</p>
+    </div>
+    <div class="top-badge">MICROPROJECT</div>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">NEW RECORD</p>
+          <h2>Student details & marks</h2>
+        </div>
+        <span class="step">01 / INPUT</span>
+      </div>
+
+      <form id="reportForm">
+        <div class="form-grid">
+          <label>Student name
+            <input id="studentName" type="text" placeholder="e.g. Rahul Sharma" required maxlength="60">
+          </label>
+          <label>Roll number
+            <input id="rollNumber" type="text" placeholder="e.g. 35" required maxlength="20">
+          </label>
+          <label>Class / Semester
+            <input id="studentClass" type="text" placeholder="e.g. B.Tech AI - Semester 1" required maxlength="40">
+          </label>
+          <label>Academic Session (Year Range)
+            <input id="session" type="text" placeholder="YYYY-YYYY" value="2026-2027" maxlength="9" inputmode="numeric"
+              required>
+          </label>
+        </div>
+
+        <div class="marks-heading">
+          <h3>Subject marks</h3>
+          <span>Enter marks out of 100</span>
+        </div>
+        <div class="marks-grid">
+          <label>Python
+            <input class="mark-input" id="python" type="number" min="0" max="100" step="1" placeholder="0–100" required>
+          </label>
+          <label>Mathematics
+            <input class="mark-input" id="maths" type="number" min="0" max="100" step="1" placeholder="0–100" required>
+          </label>
+          <label>Physics
+            <input class="mark-input" id="physics" type="number" min="0" max="100" step="1" placeholder="0–100"
+              required>
+          </label>
+          <label>Chemistry
+            <input class="mark-input" id="chemistry" type="number" min="0" max="100" step="1" placeholder="0–100"
+              required>
+          </label>
+          <label>English
+            <input class="mark-input" id="english" type="number" min="0" max="100" step="1" placeholder="0–100"
+              required>
+          </label>
+        </div>
+
+        <p id="errorMessage" class="error" role="alert"></p>
+        <div class="button-row">
+          <button class="button primary" type="submit">Generate report card</button>
+          <button class="button secondary" type="reset" id="clearButton">Clear form</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel result-panel" id="resultPanel" hidden>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">GENERATED RESULT</p>
+          <h2>Student report card</h2>
+        </div>
+        <span class="step">02 / REPORT</span>
+      </div>
+      <div id="reportCard" class="report-card"></div>
+      <div class="button-row">
+        <button class="button primary" id="printButton" type="button">Print report card</button>
+        <button class="button secondary" id="saveButton" type="button">Save report</button>
+      </div>
+      <p id="saveMessage" class="success" aria-live="polite"></p>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">LOCAL RECORDS</p>
+          <h2>Saved student reports</h2>
+        </div>
+        <span class="step">03 / RECORDS</span>
+      </div>
+      <p class="hint">Saved reports stay in this browser on this device. They are not uploaded to an online server.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Roll no.</th>
+              <th>Percentage</th>
+              <th>Grade</th>
+              <th>Result</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="recordsBody">
+            <tr>
+              <td colspan="6" class="empty">No reports saved yet.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>Student Report Card Generator · HTML, CSS & JavaScript</footer>
+  <script src="script.js"></script>
+</body>
+
+</html>
